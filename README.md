@@ -23,7 +23,7 @@ Returns:
 # 
 
 ```lua
-_G.DreamEvade.IsPathSafe(path, speed)
+_G.DreamEvade.IsPathSafe(path, speed, delay)
 ```
 Description:
 - Returns whether a path is safe to travel upon.
@@ -31,6 +31,7 @@ Description:
 Arguments:
 - `path` : table of positions with `x`, `z` properties (most likely starting with `myHero.position`)
 - `speed` : movement speed at which to travel the entire path (default `myHero.characterIntermediate.movementSpeed`)
+- `delay` : delay (seconds) before beginning path travel (default `0`)
 
 Returns:
 - `boolean`
@@ -46,7 +47,7 @@ Description:
 
 Arguments:
 - `position` : position with `x`, `z` properties
-- `delay` : number representing delay before position arrive at position (default `0`)
+- `delay` : delay (seconds) before position arrive at position (default `0`)
 
 Returns:
 - `boolean`
