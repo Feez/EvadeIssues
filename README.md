@@ -34,7 +34,8 @@ Arguments:
 - `delay` : delay (seconds) before beginning path travel (default `0`)
 
 Returns:
-- `boolean`
+- `boolean` : whether is safe (given current evade settings)
+- `table (array)` : table of *unique* spells that hit
 
 # 
 
@@ -50,7 +51,8 @@ Arguments:
 - `delay` : delay (seconds) before position arrive at position (default `0`)
 
 Returns:
-- `boolean`
+- `boolean` : whether is safe (given current evade settings)
+- `table (array)` : table of *unique* spells that hit
 
 
 # 
@@ -62,3 +64,78 @@ Description
 - Used to tell DreamEvade that the situation has changed, it needs to reconsider
 any movements & re-calc path. **Don't use this unless you are confident DreamEvade cannot detect change of
 circumstance (i.e. if you are all of the sudden teleported to a different dimension with the same coordinates)**.
+
+# Spell API #
+
+```lua
+local Spell = class()
+
+--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+--[[ Functions you might use ]]
+
+function Spell:IsEvadeEnabled()
+end
+
+function Spell:IsActive()
+end
+
+---@param pos Vector
+---@param time_to_point Delay before hero arrives at position
+---@param hero_ms Movement speed of hero (used for determining if can get out of spell area)
+function Spell:IsSafe(pos, time_to_point, hero_ms)
+end
+
+function Spell:GetDangerLevel()
+end
+
+---@param pos Vector
+function Spell:IsPositionInSpellArea(pos)
+end
+
+--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+--[[ Extras ]]
+
+function Spell:IsFOWMissileEnabled()
+end
+
+function Spell:IsFOWParticleEnabled()
+end
+
+function Spell:MatchesMissileName(name)
+end
+
+function Spell:ForceDisable(bool)
+end
+
+function Spell:IsForceDisabled()
+end
+
+function Spell:IsWall()
+end
+
+function Spell:IsSkillshot()
+end
+
+function Spell:IsMissile()
+end
+
+-- Marks a skillshot as red
+function Spell:OhShit(bool)
+end
+
+-- Marks a skillshot as yellow
+function Spell:SetIgnore(bool)
+end
+
+-- Is skillshot yellow
+function Spell:IsIgnored()
+end
+
+-- Is skillshot red
+function Spell:IsOhShit()
+end
+```
