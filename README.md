@@ -65,6 +65,16 @@ Description
 any movements & re-calc path. **Don't use this unless you are confident DreamEvade cannot detect change of
 circumstance (i.e. if you are all of the sudden teleported to a different dimension with the same coordinates)**.
 
+#
+
+```lua
+_G.DreamEvade.ActiveSpells -- Spell[]
+_G.DreamEvade.DangerousSpells -- Spell[]
+```
+Description:
+- Active spells : all active spells (even far away)
+- Dangeorus spells : all spells that evade has not figured out how to dodge (colored red)
+
 # Spell API #
 
 ```lua
@@ -92,6 +102,9 @@ end
 
 ---@param pos Vector
 function Spell:IsPositionInSpellArea(pos)
+end
+
+function Spell:IsCC()
 end
 
 --////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
